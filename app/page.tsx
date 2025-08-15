@@ -148,7 +148,7 @@ export default function Home() {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <label className="block text-xl text-zinc-500">
-                // Your Repository
+                {'// Your Repository'}
               </label>
             </div>
             <div className="flex items-center px-4 py-3 justify-between">
@@ -278,7 +278,7 @@ export default function Home() {
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
         >
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl text-zinc-500">// Preview</h2>
+            <h2 className="text-xl text-zinc-500">{'// Preview'}</h2>
             <button
               onClick={downloadImage}
               disabled={!hasGenerated || loading}
