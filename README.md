@@ -1,4 +1,5 @@
-# github-bio
+[![github-bio](https://github.com/LucasCur/github-bio/blob/main/header-image.png)](https://github.com/LucasCur/github-bio)
+
 ### Dynamic GitHub Repository Image Generator
 
 > **Inspired by:** [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats),  
