@@ -1,4 +1,4 @@
-[![github-bio](https://github.com/LucasCur/github-bio/blob/main/header-image.png)](https://github.com/LucasCur/github-bio)
+[![github-bio](https://github.com/LucasCur/github-bio/blob/main/header-image-light.png)](https://github.com/LucasCur/github-bio)
 
 ### Dynamic GitHub Repository Image Generator
 
