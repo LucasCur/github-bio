@@ -2,7 +2,6 @@
 ### Dynamic GitHub Repository Image Generator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LucasCur/github-bio)
 
 A **dynamic, customizable image generator** for GitHub repositories. Create beautiful, information-rich preview images for any GitHub repository with just a username and repo name.
 
@@ -58,9 +57,10 @@ https://your-domain.vercel.app/api/repo?username=<USERNAME>&repo=<REPO>
 
 ### Quick Deploy to Vercel
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LucasCur/github-bio)
+
 1. Click the "Deploy with Vercel" button above, or
 2. Fork this repository and connect it to Vercel
-3. Deploy automatically - no additional configuration needed
 
 ### Local Development
 
@@ -98,19 +98,6 @@ For production use, a GitHub token is highly recommended to avoid rate limiting.
 3. In Vercel, add this as an environment variable in your project settings
 
 **Note:** The application gracefully handles missing tokens by falling back to anonymous requests, but you may encounter rate limits during high usage.
-
----
-
-## 🎨 Generated Image Features
-
-Each generated image includes:
-
-- **Repository header** with owner/repo name
-- **Description** of the repository
-- **Language indicators** with GitHub's official color coding
-- **Statistics** including stars, forks, and open issues
-- **Metadata** showing creation and last update dates
-- **Professional GitHub-styled design** (1200x400px)
 
 ---
 
