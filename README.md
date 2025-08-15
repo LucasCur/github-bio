@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# github-bio // GitHub Repo Image Generator
 
-## Getting Started
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Vercel](https://img.shields.io/badge/Deploy-Vercel-blue)](https://vercel.com/new)
 
-First, run the development server:
+A **dynamic, customizable image generator** for GitHub repositories. Create beautiful, information-rich images for your projects, READMEs, or blogs with just a GitHub username and repository name. Inspired by [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats), but with **more customization options and unique styles**.  
 
-```bash
+---
+
+## 🌟 Features
+
+- Generate **real-time images** for any GitHub repository.
+- Display repository info such as:
+  - Repository name
+  - Description
+  - Stars, forks, open issues
+  - Last updated date
+  - Optional extra metrics (commits, contributors, languages)
+- **Fully customizable visuals** — fonts, colors, and layout.
+- Easy to integrate in **READMEs, blogs, websites**.
+- Serverless-friendly — deploy quickly on **Vercel**.  
+
+---
+
+## 🚀 Live Demo
+
+[Click here to try the live demo](https://your-project.vercel.app)
+
+![Demo Image](https://your-image-link-here)  
+
+---
+
+## 🛠️ Usage
+
+### API Endpoint
+
+```https://your-project.vercel.app/api/render?user=<USERNAME>&repo=<REPO>```
+
+
+**Parameters:**
+
+| Parameter | Description |
+|-----------|-------------|
+| `user`   | GitHub username of the repository owner |
+| `repo`   | Repository name |
+
+**Example:**
+
+DASH
+<img src="https://your-project.vercel.app/api/render?user=anuraghazra&repo=github-readme-stats" alt="Repo Image" />
+DASH
+
+---
+
+## ⚡ Installation (Optional)
+
+Run locally:
+
+```
+git clone https://github.com/yourusername/github-repo-image-generator.git
+cd github-repo-image-generator
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎨 Customization
 
-## Learn More
+- Modify the **image layout** in `pages/api/render.js` (or wherever your serverless function is defined).  
+- Change **fonts, colors, and sizes** using your Canvas or image rendering library.  
+- Add more **GitHub repo metrics** for richer visuals.
+- Consider adding **themes** or **dark/light mode** for more flexibility.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are welcome!  
 
-## Deploy on Vercel
+1. Fork the repo  
+2. Create your branch (`git checkout -b feature/my-feature`)  
+3. Commit your changes (`git commit -m 'Add some feature'`)  
+4. Push to the branch (`git push origin feature/my-feature`)  
+5. Open a Pull Request  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+MIT License © [Your Name](https://github.com/yourusername)
+
+---
+
+## 💡 Tips for Users
+
+- Use the images in GitHub READMEs for **project stats cards**.
+- Combine multiple API calls to create **dashboard-style images**.
+- Optimize images for **social sharing** by adjusting width and height.
