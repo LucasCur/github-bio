@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Dice6, Download, Github, AlertTriangle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Dice6, Download, Github, AlertTriangle, Star } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function Home() {
@@ -12,6 +12,27 @@ export default function Home() {
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setError] = useState('');
   const [hasGenerated, setHasGenerated] = useState(false);
+  const [starCount, setStarCount] = useState<number | null>(null);
+  const [starLoading, setStarLoading] = useState(true);
+
+  // fetch star count on component mount
+  useEffect(() => {
+    const fetchStars = async () => {
+      try {
+        const response = await fetch('/api/stars');
+        const data = await response.json();
+        if (data.stars !== undefined) {
+          setStarCount(data.stars);
+        }
+      } catch (error) {
+        console.error('Failed to fetch star count:', error);
+      } finally {
+        setStarLoading(false);
+      }
+    };
+    
+    fetchStars();
+  }, []);
 
   // popular repositories for random selection
   const popularRepos = [
@@ -112,6 +133,13 @@ export default function Home() {
     return `${typeof window !== 'undefined' ? window.location.origin : ''}${imageUrl}`;
   };
 
+  const formatStarCount = (count: number) => {
+    if (count >= 1000) {
+      return `${(count / 1000).toFixed(1)}k`;
+    }
+    return count.toString();
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-50 to-stone-100 py-8 px-6">
       <div className="w-full max-w-3xl mx-auto">
@@ -122,9 +150,33 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl font-bold text-zinc-800 mb-3">
-            github-bio
-          </h1>
+          <div className="flex items-center gap-3 mb-3">
+            <h1 className="text-4xl font-bold text-zinc-800">
+              github-bio
+            </h1>
+            
+            {/* github star button */}
+            <motion.a
+              href="https://github.com/LucasCur/github-bio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-1.5 border border-zinc-300 rounded-md hover:bg-zinc-50 transition-all hover:scale-105 active:scale-100 duration-200 text-sm font-medium text-zinc-700 hover:text-zinc-900"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <Star className="w-4 h-4" />
+              <span>Star</span>
+              <div className="flex items-center bg-zinc-300/50 px-2 py-0.5 rounded-full text-xs text-zinc-600">
+                {starLoading ? (
+                  <span>?</span>
+                ) : (
+                  <span>{starCount !== null ? formatStarCount(starCount) : '0'}</span>
+                )}
+              </div>
+            </motion.a>
+          </div>
+          
           <p className="text-zinc-500 text-lg font-light mb-4">
             A dynamic, customizable image generator for GitHub repositories.
           </p>
@@ -151,8 +203,25 @@ export default function Home() {
                 {'// Your Repository'}
               </label>
             </div>
-            <div className="flex items-center px-4 py-3 justify-between">
-              <div className="flex items-center flex-1">
+            
+            {/* section with example repositories */}
+            <motion.div 
+              className="text-left text-zinc-400 text-sm space-y-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <p className="font-light">Enter any GitHub username and repository name to create a preview</p>
+              <div className="flex justify-start items-center space-x-2 text-xs">
+                <span className="bg-zinc-200/60 px-3 py-1 rounded-full">facebook/react</span>
+                <span className="bg-zinc-200/60 px-3 py-1 rounded-full">microsoft/vscode</span>
+                <span className="bg-zinc-200/60 px-3 py-1 rounded-full">vercel/next.js</span>
+              </div>
+            </motion.div>
+
+            <div className="flex items-center justify-between">
+              {/* New container for the input fields */}
+              <div className="flex items-center flex-1 border border-zinc-200/60 rounded-lg px-4 py-3 bg-white hover:border-zinc-300 focus-within:border-zinc-400 focus-within:ring-2 focus-within:ring-zinc-100 transition-all duration-200">
                 <span className="text-zinc-500 font-mono text-base select-none">github.com/</span>
                 <input
                   type="text"
@@ -160,7 +229,7 @@ export default function Home() {
                   onChange={(e) => setUsername(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="username"
-                  className="bg-transparent border-none outline-none text-zinc-700 placeholder-zinc-400 font-mono text-base min-w-0 flex-shrink-0 focus:bg-zinc-100/50 rounded px-1 transition-colors duration-200"
+                  className="bg-transparent border-none outline-none text-zinc-700 placeholder-zinc-400 font-mono text-base min-w-0 flex-shrink-0 px-1"
                   style={{ width: Math.min(Math.max(80, username.length * 9 + 5),250) + 'px' }}
                 />
                 <span className="text-zinc-500 font-mono text-base select-none">/</span>
@@ -170,7 +239,7 @@ export default function Home() {
                   onChange={(e) => setRepo(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="repo"
-                  className="bg-transparent border-none outline-none text-zinc-700 placeholder-zinc-400 font-mono text-base min-w-0 flex-1 focus:bg-zinc-100/50 rounded px-1 transition-colors duration-200"
+                  className="bg-transparent border-none outline-none text-zinc-700 placeholder-zinc-400 font-mono text-base min-w-0 flex-1 px-1"
                 />
               </div>
               <button
@@ -178,7 +247,7 @@ export default function Home() {
                 className="ml-3 p-2 text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100/80 rounded-lg transition-all duration-200 group"
                 title="Try a random repository"
               >
-                <Dice6 className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
+                <Dice6 className="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
               </button>
             </div>
 
@@ -254,22 +323,6 @@ export default function Home() {
           </div>
         </motion.div>
 
-
-        {/* section with example repositories */}
-        <motion.div 
-          className="my-8 text-center text-zinc-400 text-sm space-y-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <p className="font-light">Enter any GitHub username and repository name to create a preview</p>
-          <div className="flex justify-center items-center space-x-4 text-xs">
-            <span className="bg-zinc-200/60 px-3 py-1 rounded-full">facebook/react</span>
-            <span className="bg-zinc-200/60 px-3 py-1 rounded-full">microsoft/vscode</span>
-            <span className="bg-zinc-200/60 px-3 py-1 rounded-full">vercel/next.js</span>
-          </div>
-        </motion.div>
-
         {/* preview section - always visible */}
         <motion.div 
           className="bg-white/70 backdrop-blur-sm border border-zinc-200/60 rounded-2xl p-8 shadow-sm"
@@ -282,7 +335,7 @@ export default function Home() {
             <button
               onClick={downloadImage}
               disabled={!hasGenerated || loading}
-              className="px-4 py-2 h-12 w-12 bg-zinc-800 hover:bg-zinc-700 disabled:bg-zinc-400 disabled:cursor-not-allowed text-white rounded-xl font-medium transition-all duration-200 flex items-center space-x-2 group"
+              className="px-4 py-2 h-12 w-12 bg-zinc-800 hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-0 text-white rounded-xl font-medium transition-all duration-200 flex items-center space-x-2 group"
             >
               <Download className="w-4 h-4" />
             </button>
@@ -351,7 +404,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <p className="text-sm font-medium text-zinc-600 mb-2">Share this image:</p>
+            <p className="text-sm font-medium text-zinc-600 mb-2">Use the image with this URL:</p>
             <code className="text-xs bg-white/80 px-3 py-2 rounded-lg text-zinc-600 break-all border border-zinc-200/60 block">
               {getPreviewUrl()}
             </code>

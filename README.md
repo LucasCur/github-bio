@@ -104,6 +104,14 @@ For production use, a GitHub token is highly recommended to avoid rate limiting.
 
 **Note:** The application gracefully handles missing tokens by falling back to anonymous requests, but you may encounter rate limits during high usage.
 
+### Additional Configuration (Non-Vercel Hosting)
+
+If you're not deploying to Vercel, you may want to set: 
+```env
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
+Used for enhanced security validation so your site can access the route that gets the number of stars THIS repo has, when displaying it on the site's generation page.
+
 ---
 
 ## 🤝 Contributing
