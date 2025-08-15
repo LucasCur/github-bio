@@ -1,102 +1,141 @@
 # github-bio
-### GitHub Repo Image Generator
+### Dynamic GitHub Repository Image Generator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel-blue)](https://vercel.com/new)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LucasCur/github-bio)
 
-A **dynamic, customizable image generator** for GitHub repositories. Create beautiful, information-rich images for your projects, READMEs, or blogs with just a GitHub username and repository name. Inspired by [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats), but with **more customization options and unique styles**.  
+A **dynamic, customizable image generator** for GitHub repositories. Create beautiful, information-rich preview images for any GitHub repository with just a username and repo name.
 
 ---
 
 ## 🌟 Features
 
-- Generate **real-time images** for any GitHub repository.
-- Display repository info such as:
-  - Repository name
-  - Description
-  - Stars, forks, open issues
-  - Last updated date
-  - Optional extra metrics (commits, contributors, languages)
-- **Fully customizable visuals** — fonts, colors, and layout.
-- Easy to integrate in **READMEs, blogs, websites**.
-- Serverless-friendly — deploy quickly on **Vercel**.  
+- Generate **real-time images** for any public GitHub repository
+- Display comprehensive repository information:
+  - Repository name and description
+  - Star count, fork count, and open issues
+  - Primary programming languages with color coding
+  - Creation and last updated dates
+- **GitHub-styled dark theme** with professional appearance
+- **No setup required** - works directly via URL
+- Easy integration in **READMEs, documentation, and websites**
+- Serverless architecture - fast and scalable
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Usage
 
-[Click here to try the live demo](https://your-project.vercel.app)
+### Direct API Usage
 
-![Demo Image](https://your-image-link-here)  
+Simply use the API endpoint with any GitHub repository:
 
----
-
-## 🛠️ Usage
-
-### API Endpoint
-
-```https://your-project.vercel.app/api/render?user=<USERNAME>&repo=<REPO>```
-
+```
+https://your-domain.vercel.app/api/repo?username=<USERNAME>&repo=<REPO>
+```
 
 **Parameters:**
 
-| Parameter | Description |
-|-----------|-------------|
-| `user`   | GitHub username of the repository owner |
-| `repo`   | Repository name |
+| Parameter | Description | Required |
+|-----------|-------------|----------|
+| `username` | GitHub username of the repository owner | Yes |
+| `repo` | Repository name | Yes |
 
-**Example:**
+### Examples
 
-DASH
-<img src="https://your-project.vercel.app/api/render?user=anuraghazra&repo=github-readme-stats" alt="Repo Image" />
-DASH
+**Embed in Markdown:**
+```markdown
+![Repository Preview](https://your-domain.vercel.app/api/repo?username=facebook&repo=react)
+```
+
+**HTML:**
+```html
+<img src="https://your-domain.vercel.app/api/repo?username=microsoft&repo=vscode" alt="Repository Preview" />
+```
 
 ---
 
-## ⚡ Installation (Optional)
+## 🔧 Installation & Deployment
 
-Run locally:
+### Quick Deploy to Vercel
 
-```
-git clone https://github.com/yourusername/github-repo-image-generator.git
-cd github-repo-image-generator
+1. Click the "Deploy with Vercel" button above, or
+2. Fork this repository and connect it to Vercel
+3. Deploy automatically - no additional configuration needed
+
+### Local Development
+
+```bash
+git clone https://github.com/LucasCur/github-bio.git
+cd github-bio
 npm install
 npm run dev
 ```
 
-Then open `http://localhost:3000` in your browser.
+Open `http://localhost:3000` to access the preview interface.
 
 ---
 
-## 🎨 Customization
+## 🔑 GitHub Authentication (Optional but Recommended)
 
-- Modify the **image layout** in `pages/api/render.js` (or wherever your serverless function is defined).  
-- Change **fonts, colors, and sizes** using your Canvas or image rendering library.  
-- Add more **GitHub repo metrics** for richer visuals.
-- Consider adding **themes** or **dark/light mode** for more flexibility.
+### Why Use a GitHub Token?
+
+GitHub's API has different rate limits depending on authentication:
+
+- **Without token (anonymous)**: 60 requests per hour per IP
+- **With Personal Access Token**: 5,000 requests per hour
+
+For production use, a GitHub token is highly recommended to avoid rate limiting.
+
+### Setup
+
+1. Create a [GitHub Personal Access Token](https://github.com/settings/tokens)
+   - No special scopes needed for public repositories
+   - For private repositories, add `repo` scope
+2. Add to your environment variables:
+   ```env
+   GITHUB_TOKEN=your_github_token_here
+   ```
+3. In Vercel, add this as an environment variable in your project settings
+
+**Note:** The application gracefully handles missing tokens by falling back to anonymous requests, but you may encounter rate limits during high usage.
+
+---
+
+## 🎨 Generated Image Features
+
+Each generated image includes:
+
+- **Repository header** with owner/repo name
+- **Description** of the repository
+- **Language indicators** with GitHub's official color coding
+- **Statistics** including stars, forks, and open issues
+- **Metadata** showing creation and last update dates
+- **Professional GitHub-styled design** (1200x400px)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome!  
+Contributions are welcome!
 
-1. Fork the repo  
-2. Create your branch (`git checkout -b feature/my-feature`)  
-3. Commit your changes (`git commit -m 'Add some feature'`)  
-4. Push to the branch (`git push origin feature/my-feature`)  
-5. Open a Pull Request  
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ---
 
 ## 📄 License
 
-MIT License © [Your Name](https://github.com/yourusername)
+MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 💡 Tips for Users
+## 💡 Use Cases
 
-- Use the images in GitHub READMEs for **project stats cards**.
-- Combine multiple API calls to create **dashboard-style images**.
-- Optimize images for **social sharing** by adjusting width and height.
+- **README banners** for your GitHub repositories
+- **Documentation** and project showcases
+- **Social media sharing** with rich repository previews
+- **Portfolio websites** displaying your projects
+- **Blog posts** about open source projects
