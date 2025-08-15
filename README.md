@@ -1,4 +1,5 @@
-# github-bio // GitHub Repo Image Generator
+# github-bio
+### GitHub Repo Image Generator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-blue)](https://vercel.com/new)
