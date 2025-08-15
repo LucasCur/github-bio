@@ -61,7 +61,7 @@ export default function Home() {
       setTimeout(() => {
         setLoading(false);
       }, 800);
-    } catch (err) {
+    } catch {
       setError('Failed to generate image');
       setLoading(false);
       setImageLoading(false);
@@ -82,8 +82,8 @@ export default function Home() {
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
-    } catch (err) {
-      console.error('Failed to download image:', err);
+    } catch {
+      console.error('Failed to download image');
     }
   };
 
@@ -129,7 +129,7 @@ export default function Home() {
             A dynamic, customizable image generator for GitHub repositories.
           </p>
           <p className="text-zinc-400 text-sm font-light">
-            You don't need this page to generate images. Just use the URL format directly: 
+            You don&apos;t need this page to generate images. Just use the URL format directly: 
             <code className="text-xs bg-zinc-100 px-2 py-1 rounded mx-1 font-mono whitespace-nowrap">
               /api/repo?username=USER&repo=REPO
             </code>

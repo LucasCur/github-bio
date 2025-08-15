@@ -367,9 +367,9 @@ export async function GET(request: NextRequest) {
         height: 400,
       },
     );
-  } catch (e: any) {
-    console.log(`${e.message}`);
-    return new Response(`Failed to generate the image: ${e.message}`, {
+  } catch (error: unknown) {
+    console.log(`${error instanceof Error ? error.message : 'Unknown error'}`);
+    return new Response(`Failed to generate the image: ${error instanceof Error ? error.message : 'Unknown error'}`, {
       status: 500,
     });
   }
