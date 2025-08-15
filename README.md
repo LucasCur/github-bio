@@ -1,6 +1,9 @@
 # github-bio
 ### Dynamic GitHub Repository Image Generator
 
+> **Inspired by:** [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats),  
+> but rebuilt from scratch with **Next.js** and focused on generating **beautiful, fully-customizable images**, rather than just copying GitHub's default style.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A **dynamic, customizable image generator** for GitHub repositories. Create beautiful, information-rich preview images for any GitHub repository with just a username and repo name.
