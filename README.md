@@ -34,7 +34,7 @@ A **dynamic, customizable image generator** for GitHub repositories. Create beau
 Simply use the API endpoint with any GitHub repository:
 
 ```
-https://your-domain.vercel.app/api/repo?username=<USERNAME>&repo=<REPO>
+https://githubbio.vercel.app/api/repo?username=<USERNAME>&repo=<REPO>
 ```
 
 **Parameters:**
@@ -48,12 +48,12 @@ https://your-domain.vercel.app/api/repo?username=<USERNAME>&repo=<REPO>
 
 **Embed in Markdown:**
 ```markdown
-![Repository Preview](https://your-domain.vercel.app/api/repo?username=facebook&repo=react)
+![Repository Preview](https://githubbio.vercel.app/api/repo?username=facebook&repo=react)
 ```
 
 **HTML:**
 ```html
-<img src="https://your-domain.vercel.app/api/repo?username=microsoft&repo=vscode" alt="Repository Preview" />
+<img src="https://githubbio.vercel.app/api/repo?username=microsoft&repo=vscode" alt="Repository Preview" />
 ```
 
 ---
