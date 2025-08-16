@@ -22,8 +22,12 @@ const satoshi = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "LucasCur/github-bio",
+  title: "lucascur/github-bio",
   description: "A dynamic, customizable image generator for GitHub repositories.",
+  icons: [
+    { rel: 'icon', type: 'image/webp', url: '/favicon.webp' },
+    { rel: 'icon', type: 'image/png', url: '/favicon.png' },
+  ],
 };
 
 export default function RootLayout({
