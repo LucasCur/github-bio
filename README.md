@@ -1,4 +1,5 @@
 [![github-bio](https://github.com/LucasCur/github-bio/blob/main/header-image-light.png)](https://github.com/LucasCur/github-bio)
+## [Try It Out](https://githubbio.vercel.app/)
 
 ### Dynamic GitHub Repository Image Generator
 
