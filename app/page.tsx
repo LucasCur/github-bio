@@ -151,7 +151,7 @@ export default function Home() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-3">
-            <h1 className="text-4xl font-bold text-zinc-600">
+            <h1 className="text-4xl font-bold">
               <span className='text-zinc-800'>github</span> <span className='text-zinc-500'>bio</span>
             </h1>
             
